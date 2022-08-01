@@ -15,6 +15,10 @@ namespace Day01
             Timestamp(ref msg);
             PrintMessage(msg);
 
+            string numberStr = "Steev";
+            bool wasGood = IntTryParse(numberStr, out int num);
+            if (wasGood) Console.WriteLine(num);
+
             Player p1 = new Player();
             int spacesToMove = 3;
             p1.MoveRight(spacesToMove);
@@ -25,6 +29,22 @@ namespace Day01
             int x1 = 0, y1 = 0;
             p1.GetPosition(ref x1, ref y1);
             Console.WriteLine(DateTime.Now);
+        }
+
+        static bool IntTryParse(string toParse, out int number)
+        {
+            bool parsed = false;
+            try
+            {
+                number = int.Parse(toParse);//required to assign a value to number
+                parsed = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("That was NOT a number!");
+                number = 0;
+            }            
+            return parsed;
         }
 
         static void PrintMessage()
@@ -51,7 +71,7 @@ namespace Day01
     }
     class Player
     {
-        int x, y;
+        int x = 0, y = 0;
 
         public void MoveRight()
         {
