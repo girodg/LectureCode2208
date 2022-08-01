@@ -12,6 +12,8 @@ namespace Day01
             PrintMessage();
             string msg = GetMessage();
             PrintMessage(msg);
+            Timestamp(ref msg);
+            PrintMessage(msg);
 
             Player p1 = new Player();
             int spacesToMove = 3;
@@ -39,6 +41,12 @@ namespace Day01
             Console.Write("Please enter your location: ");
             string message = Console.ReadLine();
             return message;
+        }
+
+        static void Timestamp(ref string messageToStamp)
+        {
+            //$ - interpolated string
+            messageToStamp = $"{DateTime.Now}: {messageToStamp}";
         }
     }
     class Player
