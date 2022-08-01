@@ -19,6 +19,11 @@ namespace Day01
             bool wasGood = IntTryParse(numberStr, out int num);
             if (wasGood) Console.WriteLine(num);
 
+            int myFavorite;
+            MyFavoriteNumber(out myFavorite);
+            PrintMessage($"Your favorite number is {myFavorite}? weird.", true);
+            Console.ReadKey();
+
             Player p1 = new Player();
             int spacesToMove = 3;
             p1.MoveRight(spacesToMove);
@@ -29,6 +34,14 @@ namespace Day01
             int x1 = 0, y1 = 0;
             p1.GetPosition(ref x1, ref y1);
             Console.WriteLine(DateTime.Now);
+        }
+
+        static void MyFavoriteNumber(out int myFave)
+        {
+            Console.Write("What is your favorite number? ");
+            string input = Console.ReadLine();
+            bool isGood = int.TryParse(input,out myFave);
+            if (!isGood) Console.WriteLine($"{input} is not acceptable! Epic FAIL!");
         }
 
         static bool IntTryParse(string toParse, out int number)
@@ -47,12 +60,19 @@ namespace Day01
             return parsed;
         }
 
-        static void PrintMessage()
+        //static void PrintMessage()
+        //{
+        //    Console.WriteLine("Hello Gotham!");
+        //}
+        static void PrintMessage(string message = "Hello Gotham!", bool isCentered = false)
         {
-            Console.WriteLine("Hello Gotham!");
-        }
-        static void PrintMessage(string message)
-        {
+            if (isCentered)
+            {
+                Console.Clear();
+                int x = Console.WindowWidth / 2 - message.Length / 2;
+                int y = Console.WindowHeight / 2;
+                Console.SetCursorPosition(x, y);
+            }
             Console.WriteLine(message);
         }
 
