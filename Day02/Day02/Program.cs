@@ -45,8 +45,21 @@ namespace Day02
             backpack.Add("cast iron skillet");
             backpack.Add("beans");//Count: 9  Capacity: ?
             Info(backpack);
+            Show(backpack);
             //Console.WriteLine(backpack[2]);//index of range exception
+
+            ListChallenge();
         }
+
+        private static void Show(List<string> backpack)
+        {
+            Console.WriteLine("---------INVENTORY--------");
+            for (int i = 0; i < backpack.Count; i++)
+            {
+                Console.WriteLine(backpack[i]);
+            }
+        }
+
         static void Info(List<string> items)
         {
             //Count: # of items that have been ADDED
@@ -61,6 +74,26 @@ namespace Day02
             for (int i = 0; i < 10; i++)
             {
                 grades.Add(rando.NextDouble()*100);
+            }
+            PrintGrades(grades);
+        }
+
+        static void PrintGrades(List<double> course)
+        {
+            Console.Clear();
+            Console.WriteLine("-----GRADES-----");
+            foreach (var grade in course)
+            {
+                if (grade < 59.5) Console.BackgroundColor = ConsoleColor.Red;
+                else if(grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+                else Console.ForegroundColor = ConsoleColor.Green; 
+
+                // ,8 -- right-align in 8 spaces
+                // :N2 -- format as a number with 2 decimal places
+                Console.WriteLine($"{grade,8:N2}");
+                Console.ResetColor();
             }
         }
 
