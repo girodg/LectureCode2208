@@ -10,6 +10,8 @@ namespace Day02
         {
             //[3] - one of the "cons" of arrays
             int[] nums = new int[3] {1,5,7};//contiguous in memory
+            List<int> numList = nums.ToList();
+            List<int> numList2 = new List<int>(nums);
 
             Console.WriteLine(nums[1]);//ex: mem address 0x1000
             //<memory address> + index * size of type
@@ -79,6 +81,25 @@ namespace Day02
             int numDropped = DropFailing(grades);
             PrintGrades(grades);
             Console.WriteLine($"{numDropped} grades were removed.");
+            Console.ReadKey();
+
+            List<double> curvedGrades = CurveGrades(grades);
+            PrintGrades(curvedGrades);
+        }
+
+        static List<double> CurveGrades(List<double> course)
+        {
+            List<double> curved = new List<double>(course);
+            for (int i = 0; i < curved.Count; i++)
+            {
+                //if (curved[i] > 95) curved[i] = 100;
+                //else curved[i] += 5;
+
+                //ternary operator
+                //  shortened if-else
+                curved[i] = (curved[i] > 95) ? 100 : curved[i] + 5;
+            }
+            return curved;
         }
 
         private static int DropFailing(List<double> grades)
