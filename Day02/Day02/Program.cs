@@ -28,6 +28,30 @@ namespace Day02
             nums = temp;
 
             ArrayChallenge();
+
+            List<string> backpack;//null
+            backpack = new List<string>();// { "sword", "uzi", "hammer", "shoe" };
+            Info(backpack);
+            backpack.Add("brick");
+            Info(backpack);//Count: 1  Capacity: 4
+            backpack.Add("pipe bomb");
+            Info(backpack);//Count: 2  Capacity: 4
+            backpack.Add("sword");//Count: 3  Capacity: 4
+            backpack.Add("uzi");//Count: 4  Capacity: 4
+            backpack.Add("hammer");//Count: 5  Capacity: 8
+            Info(backpack);
+            backpack.Add("shoe");
+            backpack.Add("chainsaw");
+            backpack.Add("cast iron skillet");
+            backpack.Add("beans");//Count: 9  Capacity: ?
+            Info(backpack);
+            //Console.WriteLine(backpack[2]);//index of range exception
+        }
+        static void Info(List<string> items)
+        {
+            //Count: # of items that have been ADDED
+            //Capacity: Length of the internal array
+            Console.WriteLine($"Count: {items.Count}\tCapacity: {items.Capacity}");
         }
 
         static void ArrayChallenge()
