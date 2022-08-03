@@ -76,6 +76,33 @@ namespace Day02
                 grades.Add(rando.NextDouble()*100);
             }
             PrintGrades(grades);
+            int numDropped = DropFailing(grades);
+            PrintGrades(grades);
+            Console.WriteLine($"{numDropped} grades were removed.");
+        }
+
+        private static int DropFailing(List<double> grades)
+        {
+            int numDropped = 0;
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if (grades[i] < 59.5)
+            //    {
+            //        numDropped++;
+            //        grades.RemoveAt(i);
+            //        i--;
+            //    }
+            //}
+            //OR...use a reverse for loop
+            for (int i = grades.Count - 1; i >= 0; i--)
+            {
+                if (grades[i] < 59.5)
+                {
+                    numDropped++;
+                    grades.RemoveAt(i);
+                }
+            }
+            return numDropped;
         }
 
         static void PrintGrades(List<double> course)
@@ -95,6 +122,7 @@ namespace Day02
                 Console.WriteLine($"{grade,8:N2}");
                 Console.ResetColor();
             }
+            Console.ReadKey();
         }
 
         static void ArrayChallenge()
