@@ -54,6 +54,16 @@ namespace Day02
             Console.WriteLine($"Count: {items.Count}\tCapacity: {items.Capacity}");
         }
 
+        static void ListChallenge()
+        {
+            List<double> grades = new List<double>();
+            Random rando = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                grades.Add(rando.NextDouble()*100);
+            }
+        }
+
         static void ArrayChallenge()
         {
             int[] numbers = new int[10];
