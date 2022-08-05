@@ -44,10 +44,40 @@ namespace Day03
                 { ZombieClass.Regular, new Zombie() { Speed = 5, Damage = 10, Health = 50, Level = 1, MaxHealth = 50, ZombieType = ZombieClass.Regular } }
             };
             monsters.Add(ZombieClass.Spitters, new Zombie() { });
-            monsters.Add(ZombieClass.Spitters, new Zombie() { });//will throw an exception!
+            try
+            {
+                monsters.Add(ZombieClass.Spitters, new Zombie() { });//will throw an exception!
 
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Zombie.Spitters are already in the dictionary.");
+            }
             monsters[ZombieClass.Exploding] = new Zombie();
             monsters[ZombieClass.Exploding] = new Zombie();//will overwrite the value. NO exception.
+            foreach (KeyValuePair<ZombieClass, Zombie> kvp in monsters)
+            {
+                //Key and Value properties on kvp
+                Console.WriteLine($"{kvp.Key}\tSpeed: {kvp.Value.Speed}");
+            }
+
+            DictionaryChallenge();
+
+        }
+
+        private static void DictionaryChallenge()
+        {
+            List<string> students = new() { "Quinton", "Forrest", "Bailey", "Rayshawn", "Hunter", "Zachary", "Bobby", "Justin", "Orlando", "Jacob", "Brandi", "Garrett" };
+            Dictionary<string, double> pg2 = new();
+            Random rando = new Random();
+            foreach (var student in students)
+            {
+                pg2.Add(student, rando.NextDouble() * 100);
+                //OR
+                pg2[student] = rando.NextDouble() * 100;
+            }
+
+
         }
     }
 }
