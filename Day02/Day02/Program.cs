@@ -51,6 +51,16 @@ namespace Day02
             //Console.WriteLine(backpack[2]);//index of range exception
 
             ListChallenge();
+
+            string data = "brick;;;pipe bomb;sword;uzi|beans|spam||twinkies";
+            char delimiter = ';';
+            char[] delimis = new char[] { ';', '|' };
+            string[] items = data.Split(delimis, StringSplitOptions.RemoveEmptyEntries);
+            Console.Clear();
+            for (int i = 0; i < items.Length; i++)
+            {
+                Console.WriteLine($"{i+1}. {items[i]}");
+            }
         }
 
         private static void Show(List<string> backpack)
