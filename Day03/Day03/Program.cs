@@ -87,6 +87,7 @@ namespace Day03
             DictionaryChallenge();
 
         }
+        #region Dictionary Methods
 
         private static void DictionaryChallenge()
         {
@@ -157,6 +158,7 @@ namespace Day03
                 Console.ResetColor();
                 Console.WriteLine($" {name}");
             }
-        }
+        } 
+        #endregion
     }
 }
