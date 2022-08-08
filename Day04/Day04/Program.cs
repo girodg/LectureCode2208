@@ -36,6 +36,23 @@ namespace Day04
                 sw.Write(best.Power);
             }//3. CLOSE THE FILE!!
 
+            Superhero bats = new Superhero();
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(delimiter);
+                    bats.Name = parts[0];
+                    bats.SecretIdentity = parts[1];
+                    bats.Power = Enum.Parse<Powers>(parts[2]);
+                }
+            }
+            //OR...read the entire file then process it
+            string fileText = File.ReadAllText(filePath);//open, read, close the file
+
+            Console.WriteLine($"{bats.Name} ({bats.SecretIdentity}) {bats.Power}");
+
             string challengePath = "scores.txt";
             WriteData(challengePath);
         }
