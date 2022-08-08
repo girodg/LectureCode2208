@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Day04
 {
@@ -22,8 +23,10 @@ namespace Day04
         static void Main(string[] args)
         {
             Superhero best = new Superhero() { Name = "Batman", SecretIdentity = "Bruce Wayne", Power = Powers.Money };
+            Superhero meh = new Superhero() { Name = "Aquaman", SecretIdentity = "Steev", Power = Powers.Swimming };
 
             string filePath = @"C:\temp\2208\Heroes.txt";
+            #region CSV
             char delimiter = '>';
             //1. open the file.
             using (StreamWriter sw = new StreamWriter(filePath))
@@ -56,6 +59,43 @@ namespace Day04
             string challengePath = "scores.txt";
             WriteData(challengePath);
             ReadData(challengePath);
+            #endregion
+
+            #region JSON
+
+            #region Serializing (saving)
+
+            string jsonFilePath = Path.ChangeExtension(filePath, ".json");
+            using (StreamWriter sw = new StreamWriter(jsonFilePath))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Formatting = Formatting.Indented;
+                    serializer.Serialize(jtw, bats);
+                }
+            }
+            #endregion
+
+            #region Deserialize (loading)
+            if(File.Exists(jsonFilePath))
+            {
+                string superText = File.ReadAllText(jsonFilePath);
+
+                Console.WriteLine("-------DESERIALIZING---------");
+                try
+                {
+                    Superhero superhero = JsonConvert.DeserializeObject<Superhero>(superText);
+                    Console.WriteLine($"{superhero.Name} ({superhero.SecretIdentity}) {superhero.Power}");
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+                Console.WriteLine($"ERROR: {jsonFilePath} does not exists!!");
+            #endregion
+            #endregion
         }
 
         #region CSV
