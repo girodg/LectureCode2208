@@ -35,6 +35,29 @@ namespace Day04
                 sw.Write(delimiter);
                 sw.Write(best.Power);
             }//3. CLOSE THE FILE!!
+
+            string challengePath = "scores.txt";
+            WriteData(challengePath);
         }
+        #region CSV
+        static void WriteData(string fPath)
+        {
+            List<int> ints = new List<int>() { 5, 4, 3, 2, 1 };
+
+            char delimiter = '?';
+            using (StreamWriter sw = new StreamWriter(fPath))
+            {
+                bool isNotFirst = false;
+                for (int i = 0; i < ints.Count; i++)
+                {
+                    if(isNotFirst)
+                        sw.Write(delimiter);
+                    sw.Write(ints[i]);
+                    isNotFirst = true;
+                }
+            }
+
+        }
+        #endregion
     }
 }
