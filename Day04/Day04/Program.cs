@@ -55,7 +55,9 @@ namespace Day04
 
             string challengePath = "scores.txt";
             WriteData(challengePath);
+            ReadData(challengePath);
         }
+
         #region CSV
         static void WriteData(string fPath)
         {
@@ -74,6 +76,28 @@ namespace Day04
                 }
             }
 
+        }
+        private static void ReadData(string challengePath)
+        {
+            List<int> nums = new List<int>();
+            char delimiter = '?';
+            using (StreamReader sr = new StreamReader(challengePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(delimiter);
+                    foreach (var part in parts)
+                    {
+                        if(int.TryParse(part, out int num))
+                            nums.Add(num);
+                    }
+                }
+                foreach (var item in nums)
+                {
+                    Console.WriteLine(item);
+                }
+            }
         }
         #endregion
     }
