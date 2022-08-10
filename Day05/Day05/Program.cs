@@ -8,6 +8,12 @@ namespace Day05
     {
         static void Main(string[] args)
         {
+            int[] nums = new int[] { 5, 13, 7, 8, 42 };
+            Swap(nums, 1, 2);
+            for (int i = 0; i < nums.Length; i++)
+                Console.Write($"{nums[i]} ");
+            Console.WriteLine();
+            Console.ReadKey();
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine(i);
@@ -18,6 +24,15 @@ namespace Day05
 
             long result = Factorial(5);
             Console.WriteLine($"5! = {result}");
+        }
+
+        private static void Swap(int[] nums, int index1, int index2)
+        {
+            //int temp = nums[index1];
+            //nums[index1] = nums[index2];
+            //nums[index2] = temp;
+
+            (nums[index2], nums[index1]) = (nums[index1], nums[index2]);
         }
 
         static long Factorial(int N)
