@@ -14,6 +14,19 @@ namespace Day05
                 Console.Write($"{nums[i]} ");
             Console.WriteLine();
             Console.ReadKey();
+
+            string s1 = "Batman", s2 = "Aquaman";
+            int comp = s1.CompareTo(s2);
+            // -1:  LESS THAN
+            //  0:  EQUAL TO
+            //  1:  GREATER THAN
+            if (comp == 0) Console.WriteLine($"{s1} EQUALS {s2}");
+            else if(comp > 0) Console.WriteLine($"{s1} GREATER THAN {s2}");
+            else if(comp < 0) Console.WriteLine($"{s1} LESS THAN {s2}");
+
+            Console.ReadKey();
+
+
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine(i);
