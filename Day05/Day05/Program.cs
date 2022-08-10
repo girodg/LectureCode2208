@@ -11,6 +11,12 @@ namespace Day05
         static Dictionary<int, ulong> _fibs = new();
         static void Main(string[] args)
         {
+            //Console.ReadKey();
+            //int size = Math.Min(Console.WindowHeight, Console.WindowWidth);
+            //Rect(size);
+            //Console.ResetColor();
+            //Console.ReadKey();
+
             _fibs.Add(0, 0);
             _fibs[1] = 1;
 
@@ -58,6 +64,44 @@ namespace Day05
 
             long result = Factorial(5);
             Console.WriteLine($"5! = {result}");
+        }
+
+        private static void Rect(int size)
+        {
+            if(size <= 0) return;
+
+            Console.BackgroundColor = RandomColor();
+            Horizontal(Console.CursorLeft, Console.CursorTop, size);
+            Horizontal(Console.CursorLeft, Console.CursorTop+size, size);
+            Vertical(Console.CursorTop, Console.CursorTop, size);
+            Vertical(Console.CursorLeft+size, Console.CursorTop, size);
+            Console.CursorLeft++;
+            Console.CursorTop++;
+            Rect(size - 2);
+        }
+
+        private static void Vertical(int cursorLeft, int cursorTop, int size)
+        {
+            int x0 = Console.CursorLeft;
+            int y0 = Console.CursorTop;
+            for (int i = cursorTop; i <= cursorTop+size; i++)
+            {
+                Console.SetCursorPosition(cursorLeft, i);
+                Console.Write(' ');
+            }
+            Console.SetCursorPosition(x0, y0);
+        }
+
+        private static void Horizontal(int cursorLeft, int cursorTop, int size)
+        {
+            int x0 = Console.CursorLeft;
+            int y0 = Console.CursorTop;
+            Console.SetCursorPosition(cursorLeft, cursorTop);
+            for (int i = cursorLeft; i <= cursorLeft+size; i++)
+            {
+                Console.Write(' ');
+            }
+            Console.SetCursorPosition(x0, y0);
         }
 
         static ulong Fib(int N)
