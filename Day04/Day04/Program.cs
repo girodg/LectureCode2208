@@ -22,11 +22,15 @@ namespace Day04
     {
         static void Main(string[] args)
         {
-            Superhero best = new Superhero() { Name = "Batman", SecretIdentity = "Bruce Wayne", Power = Powers.Money };
-            Superhero meh = new Superhero() { Name = "Aquaman", SecretIdentity = "Steev", Power = Powers.Swimming };
+                        Superhero meh = new Superhero() { Name = "Aquaman", SecretIdentity = "Steev", Power = Powers.Swimming };
 
             string filePath = @"C:\temp\2208\Heroes.txt";
+
+            string extension = Path.GetExtension(filePath);
+            bool hasExtension = Path.HasExtension(filePath);
+            string newFilePath = Path.ChangeExtension(filePath, "gif");
             #region CSV
+            Superhero best = new Superhero() { Name = "Batman", SecretIdentity = "Bruce Wayne", Power = Powers.Money };
             char delimiter = '>';
             //1. open the file.
             using (StreamWriter sw = new StreamWriter(filePath))
@@ -97,6 +101,13 @@ namespace Day04
             #endregion
             #endregion
 
+        }
+
+        static void ReadFile(string filePath)
+        {
+            using StreamReader sr = new StreamReader(filePath);
+            string line = sr.ReadLine();
+            Console.WriteLine(line);
         }
 
         #region CSV
