@@ -32,6 +32,11 @@ namespace Day07CL
             private set { _items = value; }
         }
 
+        public Inventory(int capacity, List<string> items)
+        {
+            Capacity = capacity;
+            _items = items.ToList();
+        }
 
     }
 }
