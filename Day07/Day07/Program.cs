@@ -9,7 +9,7 @@ namespace Day07
     {
         static void Main(string[] args)
         {
-            GameObject gObj = new GameObject();
+            GameObject gObj = new GameObject(ConsoleColor.Blue, '?');
             gObj.Color = ConsoleColor.DarkCyan;//call the set on Color
             ConsoleColor theColor = gObj.Color;//call the get on Color
             Console.WriteLine(gObj.Color);//?? set or get? get
