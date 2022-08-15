@@ -38,5 +38,13 @@ namespace Day07CL
             _items = items.ToList();
         }
 
+        public void AddItem(string itemToAdd)
+        {
+            if (Count == Capacity)
+                throw new Exception("Your inventory is full, fool!");
+
+            _items.Add(itemToAdd);
+        }
+
     }
 }

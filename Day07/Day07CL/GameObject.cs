@@ -18,6 +18,8 @@ namespace Day07CL
         //
         private ConsoleColor _color;
         private int _x, _y;
+
+        private static int _numberOfGameObjects = 0;
         #endregion
 
         #region Properties
@@ -56,17 +58,38 @@ namespace Day07CL
         //public GameObject() { }
 
         //SPECIAL methods that initialize your object
-        public GameObject(ConsoleColor color, char symbol) 
+        public GameObject(ConsoleColor color, char symbol, int x, int y) 
         {
             Color = color;
             Symbol = symbol;
+            _numberOfGameObjects++;
+            _x = x;
+            _y = y;
         }
 
 
         #endregion
-        void DrawMe()
+
+        #region Methods
+
+        //instance methods have a hidden parameter: this
+        //this is the instance that the method was called on
+        public void DrawMe()//GameObject this
         {
+            Console.ForegroundColor = Color;
+            Console.SetCursorPosition(_x, _y);
+            Console.Write(Symbol);
+            Console.ResetColor();
         }
+
+        //STATIC methods do NOT have 'this' parameter
+        public static void Info()
+        {
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine($"Game Objects: {_numberOfGameObjects}");
+        }
+
+        #endregion
 
     }
 }
