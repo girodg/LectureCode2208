@@ -50,8 +50,10 @@ namespace Day07CL
                 _y = 0;
         }
 
-        public void HideMe()
+        public void Debug()
         {
+            Console.SetCursorPosition(0, 0);
+            Console.Write($"Player: {_x},{_y}");
 
         }
 

@@ -46,5 +46,16 @@ namespace Day07CL
             _items.Add(itemToAdd);
         }
 
+        public void PrintInventory()
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                FantasyWeapon weapon = _items[i];
+                Console.WriteLine($"\nI have a level {weapon.Level} {weapon.Rarity} weapon that can do {weapon.MaxDamage} of damage. It costs {weapon.Cost}");
+                if(weapon is BowWeapon bow)
+                    Console.WriteLine($"\tIt is a bow with {bow.ArrowCount} of {bow.ArrowCapacity} arrows.");
+            }
+        }
+
     }
 }

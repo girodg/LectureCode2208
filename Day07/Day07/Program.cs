@@ -57,6 +57,7 @@ namespace Day07
             BowWeapon bow = new BowWeapon(5, 10, WeaponRarity.Common, 1, 20, 15);
             backpack.AddItem(sting);
             backpack.AddItem(bow);
+            backpack.PrintInventory();
 
             //gObj.Symbol = '?';
             Console.ReadKey();
@@ -110,6 +111,7 @@ namespace Day07
             {
                 gameObject.DrawMe();
             }
+#if DEBUG
             //DOWNCAST
             //  NOT SAFE!!!!
             //3 ways:
@@ -117,7 +119,7 @@ namespace Day07
             try
             {
                 Player playa = (Player)gameObjects[0];
-                playa.HideMe();
+                playa.Debug();
             }
             catch (Exception)
             {
@@ -127,12 +129,15 @@ namespace Day07
             //   will assign NULL if the cast is invalid
             Player p2 = gameObjects[0] as Player;
             if(p2 != null)
-                p2.HideMe();
+                p2.Debug();
 
             //3) use pattern matching
             if (gameObjects[0] is Player p3)
-                p3.HideMe();
+                p3.Debug();
 
+            if (gameObjects.Last() is Player p4)
+                p4.Debug();
+#endif
 
             //playa.DrawMe();
         }
