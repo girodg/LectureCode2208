@@ -14,6 +14,8 @@ namespace Day07
             ConsoleColor theColor = gObj.Color;//call the get on Color
             Console.WriteLine(gObj.Color);//?? set or get? get
 
+            Player playa = new Player("P", 100, 50, ConsoleColor.Yellow, 'P', 5, 7);
+            Console.ReadKey();
             gObj.DrawMe();
             try
             {
@@ -40,6 +42,8 @@ namespace Day07
             FantasyWeapon sting = Factory.CreateWeapon(WeaponRarity.Legendary, 100, 1000, 100000);
             int damage = sting.DoDamage();
             Console.WriteLine($"I swing sting and do {damage} damage to the rat.");
+
+            BowWeapon bow = new BowWeapon(5, 10, WeaponRarity.Common, 1, 20, 15);
 
             //gObj.Symbol = '?';
             Console.ReadKey();

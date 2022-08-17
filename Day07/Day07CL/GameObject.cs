@@ -58,8 +58,9 @@ namespace Day07CL
         //public GameObject() { }
 
         //SPECIAL methods that initialize your object
-        public GameObject(ConsoleColor color, char symbol, int x, int y) 
+        public GameObject(ConsoleColor color, char symbol, int x, int y)
         {
+            Console.WriteLine($"GameObject: {symbol}");
             Color = color;
             Symbol = symbol;
             _numberOfGameObjects++;
