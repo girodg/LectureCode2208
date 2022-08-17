@@ -21,5 +21,34 @@ namespace Day07CL
             Score = score;
             Health = health;
         }
+
+        public void MoveRight()
+        {
+            _x++;
+            if (_x >= Console.WindowWidth)
+                _x = 0;
+        }
+
+        public void MoveLeft()
+        {
+            _x--;
+            if (_x <0) 
+                _x = Console.WindowWidth-1;
+        }
+
+        public void MoveUp()
+        {
+            _y--;
+            if (_y < 0)
+                _y = Console.WindowHeight - 1;
+        }
+
+        public void MoveDown()
+        {
+            _y++;
+            if (_y >= Console.WindowHeight)
+                _y = 0;
+        }
+
     }
 }

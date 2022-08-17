@@ -10,7 +10,7 @@ namespace Day07CL
     {
         //INSTANCE fields
         private int _capacity = 0;
-        private List<string> _items = new List<string>();
+        private List<FantasyWeapon> _items = new List<FantasyWeapon>();
 
         public int Capacity
         {
@@ -26,19 +26,19 @@ namespace Day07CL
             get { return _items.Count; }
         }
 
-        public List<string> Items
+        public List<FantasyWeapon> Items
         {
             get { return _items; }
             private set { _items = value; }
         }
 
-        public Inventory(int capacity, List<string> items)
+        public Inventory(int capacity, List<FantasyWeapon> items)
         {
             Capacity = capacity;
             _items = items.ToList();
         }
 
-        public void AddItem(string itemToAdd)
+        public void AddItem(FantasyWeapon itemToAdd)
         {
             if (Count == Capacity)
                 throw new Exception("Your inventory is full, fool!");

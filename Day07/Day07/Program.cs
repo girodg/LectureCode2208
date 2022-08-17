@@ -9,12 +9,23 @@ namespace Day07
     {
         static void Main(string[] args)
         {
+            int num = 5;
+            long bigNum = num;//implicit casting
+            num = (int)bigNum;//explicit casting
+
+
             GameObject gObj = new GameObject(ConsoleColor.Blue, '?', 10, 5);
             gObj.Color = ConsoleColor.DarkCyan;//call the set on Color
             ConsoleColor theColor = gObj.Color;//call the get on Color
             Console.WriteLine(gObj.Color);//?? set or get? get
 
             Player playa = new Player("P", 100, 50, ConsoleColor.Yellow, 'P', 5, 7);
+
+            //UPCASTING
+            //  ALWAYS SAFE!
+            GameObject gPlayer = playa;
+
+            GameLoop(playa);
             Console.ReadKey();
             gObj.DrawMe();
             try
@@ -25,28 +36,97 @@ namespace Day07
             {
             }
 
-            List<string> items = new List<string>()
-            {
-                "map", "flashlight", "shovel"
-            };
+            List<FantasyWeapon> items = new List<FantasyWeapon>();
+            //{
+            //    "map", "flashlight", "shovel"
+            //};
             Inventory backpack = new Inventory(3, items);
-            try
-            {
-                backpack.AddItem("spear");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //try
+            //{
+            //    backpack.AddItem("spear");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
             FantasyWeapon sting = Factory.CreateWeapon(WeaponRarity.Legendary, 100, 1000, 100000);
             int damage = sting.DoDamage();
             Console.WriteLine($"I swing sting and do {damage} damage to the rat.");
 
             BowWeapon bow = new BowWeapon(5, 10, WeaponRarity.Common, 1, 20, 15);
+            backpack.AddItem(sting);
+            backpack.AddItem(bow);
 
             //gObj.Symbol = '?';
             Console.ReadKey();
+        }
+
+        private static void GameLoop(Player playa)
+        {
+            Console.CursorVisible = false;
+            Console.Clear();
+            List<GameObject> gameObjects = GenerateObjects();
+            gameObjects.Add(playa);//upcasting
+            do
+            {
+                Render(gameObjects);
+            } while (!MovePlayer(playa));
+            Console.CursorVisible = true;
+        }
+
+        private static bool MovePlayer(Player playa)
+        {
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                switch (key.Key)
+                {
+                    case ConsoleKey.Escape:
+                        return true;
+                    case ConsoleKey.Spacebar:
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        playa.MoveLeft();
+                        return false;
+                    case ConsoleKey.UpArrow:
+                        playa.MoveUp();
+                        return false;
+                    case ConsoleKey.RightArrow:
+                        playa.MoveRight();
+                        return false;
+                    case ConsoleKey.DownArrow:
+                        playa.MoveDown();
+                        return false;
+                    default:
+                        break;
+                }
+            } while (true);
+        }
+
+        private static void Render(List<GameObject> gameObjects)
+        {
+            foreach (var gameObject in gameObjects)
+            {
+                gameObject.DrawMe();
+            }
+            //playa.DrawMe();
+        }
+
+        private static List<GameObject> GenerateObjects()
+        {
+            Random rando = new Random();
+            List<GameObject> gameObjects = new List<GameObject>(20);
+            for (int i = 0; i < 20; i++)
+            {
+                gameObjects.Add(
+                    Factory.BuildGameObject((ConsoleColor)rando.Next(16),
+                                            (char)rando.Next(255),
+                                            rando.Next(Console.WindowWidth),
+                                            rando.Next(Console.WindowHeight))
+                    );
+            }
+            return gameObjects;
         }
     }
 }

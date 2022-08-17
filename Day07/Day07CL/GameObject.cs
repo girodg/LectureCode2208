@@ -17,7 +17,7 @@ namespace Day07CL
         //FIELDS: data of your object
         //
         private ConsoleColor _color;
-        private int _x, _y;
+        protected int _x, _y;
 
         private static int _numberOfGameObjects = 0;
         #endregion
@@ -60,7 +60,7 @@ namespace Day07CL
         //SPECIAL methods that initialize your object
         public GameObject(ConsoleColor color, char symbol, int x, int y)
         {
-            Console.WriteLine($"GameObject: {symbol}");
+            //Console.WriteLine($"GameObject: {symbol}");
             Color = color;
             Symbol = symbol;
             _numberOfGameObjects++;
