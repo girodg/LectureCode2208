@@ -50,5 +50,10 @@ namespace Day07CL
                 _y = 0;
         }
 
+        public void HideMe()
+        {
+
+        }
+
     }
 }

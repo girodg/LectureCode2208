@@ -110,6 +110,30 @@ namespace Day07
             {
                 gameObject.DrawMe();
             }
+            //DOWNCAST
+            //  NOT SAFE!!!!
+            //3 ways:
+            //1) explicitly cast
+            try
+            {
+                Player playa = (Player)gameObjects[0];
+                playa.HideMe();
+            }
+            catch (Exception)
+            {
+            }
+
+            //2) use the 'as' keyword
+            //   will assign NULL if the cast is invalid
+            Player p2 = gameObjects[0] as Player;
+            if(p2 != null)
+                p2.HideMe();
+
+            //3) use pattern matching
+            if (gameObjects[0] is Player p3)
+                p3.HideMe();
+
+
             //playa.DrawMe();
         }
 
