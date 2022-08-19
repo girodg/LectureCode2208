@@ -9,6 +9,14 @@ namespace Day07
     {
         static void Main(string[] args)
         {
+            //looping over an enum...
+            foreach (Spell spell in Enum.GetValues<Spell>())
+            {
+                Console.WriteLine(spell);
+            }
+            Console.ReadKey();
+
+
             int num = 5;
             long bigNum = num;//implicit casting
             num = (int)bigNum;//explicit casting

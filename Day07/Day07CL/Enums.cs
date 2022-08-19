@@ -7,6 +7,6 @@
 
     public enum Spell
     {
-        Fire, Lightning, Freeze, Shrink
+        Fire = 10, Lightning = 15, Freeze = 25, Shrink
     }
 }
