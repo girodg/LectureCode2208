@@ -17,5 +17,11 @@ namespace Day07CL
             ArrowCapacity = capacity;
             ArrowCount = count;
         }
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine($"\tIt is a bow with {ArrowCount} of {ArrowCapacity} arrows.");
+
+        }
     }
 }
