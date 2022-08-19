@@ -4,4 +4,9 @@
     {
         Common, Uncommon, Rare, Legendary
     }
+
+    public enum Spell
+    {
+        Fire, Lightning, Freeze, Shrink
+    }
 }

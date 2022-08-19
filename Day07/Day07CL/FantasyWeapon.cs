@@ -34,8 +34,11 @@ namespace Day07CL
 
         public virtual void Display()
         {
-            Console.WriteLine($"\nI have a level {Level} {Rarity} weapon that can do {MaxDamage} of damage. It costs {Cost}");
-
+            Console.Write($"I have a level {Level}");
+            Console.ForegroundColor = Rarity.GetColor();
+            Console.Write($" {Rarity} weapon");
+            Console.ResetColor();
+            Console.WriteLine($" that costs {Cost} and can do {MaxDamage} max damage.");
         }
     }
 }
