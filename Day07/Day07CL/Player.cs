@@ -28,6 +28,7 @@ namespace Day07CL
         public void MoveRight()
         {
             _oldX = _x;
+            _oldY = _y;
             _x++;
             if (_x >= Console.WindowWidth)
                 _x = 0;
@@ -36,6 +37,7 @@ namespace Day07CL
         public void MoveLeft()
         {
             _oldX = _x;
+            _oldY = _y;
             _x--;
             if (_x <0) 
                 _x = Console.WindowWidth-1;
@@ -43,6 +45,7 @@ namespace Day07CL
 
         public void MoveUp()
         {
+            _oldX = _x;
             _oldY = _y;
             _y--;
             if (_y < 0)
@@ -51,6 +54,7 @@ namespace Day07CL
 
         public void MoveDown()
         {
+            _oldX = _x;
             _oldY = _y;
             _y++;
             if (_y >= Console.WindowHeight)
@@ -60,7 +64,7 @@ namespace Day07CL
         public void Debug()
         {
             Console.SetCursorPosition(0, 0);
-            Console.Write($"Player: {_x},{_y}");
+            Console.Write($"Player: {_x,2},{_y,2} {_oldX,2},{_oldY,2}");
 
         }
 
