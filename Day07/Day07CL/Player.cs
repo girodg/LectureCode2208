@@ -9,6 +9,7 @@ namespace Day07CL
     // Derived : Base
     public class Player : GameObject
     {
+        int _oldX, _oldY;
         public int Score { get; set; }
         public string Name { get; set; }
         public int Health { get; set; }
@@ -20,10 +21,13 @@ namespace Day07CL
             Name = name;
             Score = score;
             Health = health;
+            _oldX = x;
+            _oldY = y;
         }
 
         public void MoveRight()
         {
+            _oldX = _x;
             _x++;
             if (_x >= Console.WindowWidth)
                 _x = 0;
@@ -31,6 +35,7 @@ namespace Day07CL
 
         public void MoveLeft()
         {
+            _oldX = _x;
             _x--;
             if (_x <0) 
                 _x = Console.WindowWidth-1;
@@ -38,6 +43,7 @@ namespace Day07CL
 
         public void MoveUp()
         {
+            _oldY = _y;
             _y--;
             if (_y < 0)
                 _y = Console.WindowHeight - 1;
@@ -45,6 +51,7 @@ namespace Day07CL
 
         public void MoveDown()
         {
+            _oldY = _y;
             _y++;
             if (_y >= Console.WindowHeight)
                 _y = 0;
@@ -55,6 +62,17 @@ namespace Day07CL
             Console.SetCursorPosition(0, 0);
             Console.Write($"Player: {_x},{_y}");
 
+        }
+
+        public override void DrawMe()
+        {
+            //HIDE the old symbol
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(_oldX, _oldY);
+            Console.Write(' ');
+            Console.ResetColor();
+
+            base.DrawMe();//when you call base version, you are EXTENDING the method
         }
 
     }

@@ -75,7 +75,7 @@ namespace Day07CL
 
         //instance methods have a hidden parameter: this
         //this is the instance that the method was called on
-        public void DrawMe()//GameObject this
+        public virtual void DrawMe()//GameObject this
         {
             Console.ForegroundColor = Color;
             Console.SetCursorPosition(_x, _y);
