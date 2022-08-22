@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,12 @@ namespace Day07CL
             }
             damage += weapon.DoDamage();
             return damage;
+}
+
+        public static void Print<T>(this List<T> items)
+        {
+            foreach (var item in items)
+                Console.WriteLine(item);
         }
 
 
