@@ -7,6 +7,12 @@ namespace Day11CSharp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine(sizeof(char));
+
+            for (uint i = 0; i < 10; i++)
+            {
+
+            }
         }
     }
 }
